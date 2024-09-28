@@ -17,6 +17,8 @@ public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T
                     GameObject obj = new GameObject(typeof(T).Name);
                     _instance = obj.AddComponent<T>();
 
+                    DontDestroyOnLoad(obj);
+
                     Logger.Log($"Complete initialize {typeof(T).Name}");
                 }
 
