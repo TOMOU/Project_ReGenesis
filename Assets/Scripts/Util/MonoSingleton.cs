@@ -15,11 +15,14 @@ public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T
                 if (_instance == null)
                 {
                     GameObject obj = new GameObject(typeof(T).Name);
+                    obj.transform.SetParent(GameManager.Instance.ManagerRoot);
                     _instance = obj.AddComponent<T>();
 
-                    DontDestroyOnLoad(obj);
-
                     Logger.Log($"Complete initialize {typeof(T).Name}");
+                }
+                else
+                {
+                    Logger.LogWarning($"Already initialized {typeof(T).Name}");
                 }
 
                 _instance.Init();
