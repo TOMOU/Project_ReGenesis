@@ -18,7 +18,7 @@ public class GameManager : MonoSingleton<GameManager>
         SceneRoot = transform.Find("Scene");
         UICanvasRoot = transform.Find("UI/UICanvas");
 
-        // Å¸ÀÌÆ² ¾À ·Îµå
+        // íƒ€ì´í‹€ ì”¬ ë¡œë“œ
         SceneManager.Instance.LoadScene("Scene_Title");
     }
 

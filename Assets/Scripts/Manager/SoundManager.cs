@@ -5,30 +5,48 @@ public class SoundManager : MonoSingleton<SoundManager>
 {
     private class ClipCache
     {
+        public string Name { get; }
+        public SoundType Type { get; }
         public AudioClip Clip { get; }
         public float Volume { get; }
         public bool IsLoop { get; }
 
-        public ClipCache(AudioClip clip, float volume, bool isLoop)
+        public ClipCache(string name, SoundType type, AudioClip clip, float volume, bool isLoop)
         {
+            Name = name;
+            Type = type;
             Clip = clip;
             Volume = volume;
             IsLoop = isLoop;
         }
     }
 
-    private Dictionary<string, ClipCache> _clipDic;
+    private Dictionary<int, ClipCache> _clipDic;
     private List<AudioSource> _sourceList;
     private AudioSource _curBGM;
 
     protected override void Init()
     {
-        _clipDic = new Dictionary<string, ClipCache>
+        _clipDic = new Dictionary<int, ClipCache>();
+        var table = TableManager.Instance.GetTable<SoundTable>();
+        if (table != null)
         {
-            { "Sound/BGM/Test_01", new ClipCache(ResourceManager.Instance.LoadAudioClip("Sound/BGM/Test_01"), 1f, true) },
-            { "Sound/BGM/Test_02", new ClipCache(ResourceManager.Instance.LoadAudioClip("Sound/BGM/Test_02"), 1f, true) },
-            { "Sound/FX/Test_01", new ClipCache(ResourceManager.Instance.LoadAudioClip("Sound/FX/Test_01"), 1f, false) }
-        };
+            foreach (var data in table.Table)
+            {
+                int index = data.Index;
+                SoundType type = data.Type;
+                string name = data.Name;
+                string filePath = data.FilePath;
+                float volume = data.Volume;
+                bool isLoop = data.IsLoop;
+
+                AudioClip clip = ResourceManager.Instance.LoadAudioClip(filePath);
+                if (clip != null)
+                {
+                    _clipDic.Add(index, new ClipCache(name, type, clip, volume, isLoop));
+                }
+            }
+        }
 
         _sourceList = new List<AudioSource>();
     }
@@ -42,7 +60,7 @@ public class SoundManager : MonoSingleton<SoundManager>
         _sourceList = null;
     }
 
-    public void PlayBGM(string bgmName)
+    public void PlayBGM(int index)
     {
         if (_curBGM?.isPlaying == true)
         {
@@ -50,13 +68,13 @@ public class SoundManager : MonoSingleton<SoundManager>
         }
 
         _curBGM = GetOrCreateAudioSource();
-        PlayAudio(bgmName, _curBGM);
+        PlayAudio(index, _curBGM);
     }
 
-    public void PlaySound(string soundName)
+    public void PlaySound(int index)
     {
         var source = GetOrCreateAudioSource();
-        PlayAudio(soundName, source);
+        PlayAudio(index, source);
     }
 
     private AudioSource GetOrCreateAudioSource()
@@ -71,9 +89,9 @@ public class SoundManager : MonoSingleton<SoundManager>
         return source;
     }
 
-    private void PlayAudio(string audioName, AudioSource source)
+    private void PlayAudio(int index, AudioSource source)
     {
-        if (_clipDic.TryGetValue(audioName, out var cache))
+        if (_clipDic.TryGetValue(index, out var cache))
         {
             source.clip = cache.Clip;
             source.volume = cache.Volume;

@@ -20,10 +20,6 @@ public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T
 
                     Logger.Log($"Complete initialize {typeof(T).Name}");
                 }
-                else
-                {
-                    Logger.LogWarning($"Already initialized {typeof(T).Name}");
-                }
 
                 _instance.Init();
             }

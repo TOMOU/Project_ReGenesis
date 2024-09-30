@@ -14,7 +14,7 @@ public class CSVReader
 
             string value = cell[i].Trim();
 
-            // T Çü½Ä¿¡ µû¶ó ´Ù¸¥ °ªÀ» ¸®ÅÏ
+            // T í˜•ì‹ì— ë”°ë¼ ë‹¤ë¥¸ ê°’ì„ ë¦¬í„´
             return typeof(T) switch
             {
                 Type t when t == typeof(int) => (T)(object)(int.TryParse(value, out int intValue) ? intValue : default),
@@ -52,7 +52,7 @@ public class CSVReader
 
     private void ParseCSV(string data)
     {
-        // UTF-8 BOM Á¦°Å ¹× ÁÙ¹Ù²Ş
+        // UTF-8 BOM ì œê±° ë° ì¤„ë°”ê¿ˆ
         data = data.Trim('\uFEFF', '\u200B').Replace("\r\n", "\n").Replace("\r", "\n");
         string[] lines = data.Split('\n');
 
@@ -64,7 +64,7 @@ public class CSVReader
             rows[i] = new Row();
             rows[i].cell = lines[i].Split(',');
 
-            // ÃÖ´ë ¿­ ¼ö °è»ê
+            // ìµœëŒ€ ì—´ ìˆ˜ ê³„ì‚°
             colCount = Mathf.Max(colCount, rows[i].cell.Length);
         }
     }
