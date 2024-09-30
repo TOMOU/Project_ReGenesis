@@ -24,6 +24,7 @@ public class CSVReader
                 Type t when t == typeof(byte) => (T)(object)(byte.TryParse(value, out byte byteValue) ? byteValue : default),
                 Type t when t == typeof(double) => (T)(object)(double.TryParse(value, out double doubleValue) ? doubleValue : default),
                 Type t when t == typeof(bool) => (T)(object)(value.Equals("TRUE", System.StringComparison.OrdinalIgnoreCase)),
+                Type t when t.IsEnum => Enum.TryParse(typeof(T), value, out var enumValue) ? (T)enumValue : default,
                 _ => (T)(object)value,
             };
         }

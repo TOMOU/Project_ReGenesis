@@ -10,7 +10,7 @@ public class TableManager : MonoSingleton<TableManager>
         _tableDic = new Dictionary<Type, ITable>();
 
         SoundTable soundTable = new SoundTable();
-        soundTable.Load("SoundTable.csv");
+        soundTable.Load("Table/SoundTable");
         _tableDic[typeof(SoundTable)] = soundTable;
     }
 

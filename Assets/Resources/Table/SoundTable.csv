@@ -1,0 +1,17 @@
+Index,Type,Name,FilePath,Volume,IsLoop,Description
+0,BGM,Eternal Light,Sound/BGM/Eternal Light,1,TRUE,타이틀 BGM
+1,BGM,Hidden Adversary,Sound/BGM/Hidden Adversary,1,TRUE,시나리오 BGM
+2,BGM,Light of Hope,Sound/BGM/Light of Hope,1,TRUE,판도라
+3,BGM,Queen of the Night,Sound/BGM/Queen of the Night,1,TRUE,릴리스
+4,BGM,Savior,Sound/BGM/Savior,1,TRUE,시나리오 BGM
+5,BGM,Sorrow,Sound/BGM/Sorrow,1,TRUE,시나리오 BGM
+6,BGM,The Child's Universe,Sound/BGM/The Child's Universe,1,TRUE,진시황
+7,BGM,The Power of Evil,Sound/BGM/The Power of Evil,1,TRUE,레이드 BGM
+8,BGM,The World,Sound/BGM/The World,1,TRUE,알렉산더
+9,BGM,Warrior of Anger,Sound/BGM/Warrior of Anger,1,TRUE,치우
+10,BGM,Song of the Peace,Sound/BGM/Song of the Peace,1,TRUE,시나리오 BGM
+11,BGM,Funky-Chaotic,Sound/BGM/Funky-Chaotic,1,TRUE,전투 BGM
+12,BGM,Get Dual !!,Sound/BGM/Get Dual !!,1,TRUE,투기장 BGM
+13,BGM,Swing-The-Bat,Sound/BGM/Swing-The-Bat,1,TRUE,전투 BGM
+14,BGM,You are SO EASY,Sound/BGM/You are SO EASY,1,TRUE,전투 BGM
+15,BGM,Journey of the Stars,Sound/BGM/Journey of the Stars,1,TRUE,로비 BGM
