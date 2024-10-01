@@ -58,29 +58,6 @@ public class SceneManager : MonoSingleton<SceneManager>
             yield break;
         }
 
-
-        // (HERE)
-
         Logger.Log($"Complete load {sceneName}.");
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Keypad1))
-        {
-            LoadScene("Scene_Title");
-        }
-        else if (Input.GetKeyDown(KeyCode.Keypad2))
-        {
-            LoadScene("Scene_Lobby");
-        }
-        else if (Input.GetKeyDown(KeyCode.Keypad3))
-        {
-            LoadScene("Scene_Stage");
-        }
-        else if (Input.GetKeyDown(KeyCode.Keypad4))
-        {
-            LoadScene("Scene_Arena");
-        }
     }
 }

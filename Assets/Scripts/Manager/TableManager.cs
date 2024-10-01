@@ -10,8 +10,12 @@ public class TableManager : MonoSingleton<TableManager>
         _tableDic = new Dictionary<Type, ITable>();
 
         SoundTable soundTable = new SoundTable();
-        soundTable.Load("Table/SoundTable");
+        soundTable.Load();
         _tableDic[typeof(SoundTable)] = soundTable;
+
+        LocalizationTable localizationTable = new LocalizationTable();
+        localizationTable.Load();
+        _tableDic[typeof(LocalizationTable)] = localizationTable;
     }
 
     protected override void Release()

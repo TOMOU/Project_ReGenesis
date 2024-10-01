@@ -1,4 +1,4 @@
 public interface ITable
 {
-    public void Load(string path);
+    public void Load();
 }

@@ -2,14 +2,37 @@ using UnityEngine;
 
 public class TestScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private int _index = 1000000;
+
+    private void Update()
     {
-        // 디버그
-        GameManager gm = GameManager.Instance;
-        SoundManager sm = SoundManager.Instance;
-        LocalizationManager lm = LocalizationManager.Instance;
-        NotificationManager nm = NotificationManager.Instance;
-        TutorialManager tm = TutorialManager.Instance;
+        if (Input.GetKeyDown(KeyCode.Keypad1))
+        {
+            SceneManager.Instance.LoadScene("Scene_Title");
+        }
+        else if (Input.GetKeyDown(KeyCode.Keypad2))
+        {
+            SceneManager.Instance.LoadScene("Scene_Lobby");
+        }
+        else if (Input.GetKeyDown(KeyCode.Keypad3))
+        {
+            SceneManager.Instance.LoadScene("Scene_Stage");
+        }
+        else if (Input.GetKeyDown(KeyCode.Keypad4))
+        {
+            SceneManager.Instance.LoadScene("Scene_Arena");
+        }
+        else if (Input.GetKeyDown(KeyCode.Space))
+        {
+            string str = LocalizationManager.Instance.GetString(_index++);
+            if (string.IsNullOrEmpty(str) == false)
+            {
+                Logger.LogFormat("[{0}] {1}", _index, str);
+            }
+            else
+            {
+                Logger.LogWarningFormat("[{0}] string is null", _index);
+            }
+        }
     }
 }

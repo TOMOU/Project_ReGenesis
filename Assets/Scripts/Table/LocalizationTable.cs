@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-public class SoundTable : ITable
+public class LocalizationTable : ITable
 {
-    private List<SoundData> _table;
-    public ReadOnlyCollection<SoundData> Table => _table.AsReadOnly();
+    private List<LocalizationData> _table;
+    public ReadOnlyCollection<LocalizationData> Table => _table.AsReadOnly();
 
     public void Load()
     {
@@ -16,7 +16,7 @@ public class SoundTable : ITable
             return;
         }
 
-        _table = new List<SoundData>();
+        _table = new List<LocalizationData>();
 
         for (int i = 1; i < reader.rowCount; i++)
         {
@@ -24,14 +24,12 @@ public class SoundTable : ITable
             if (row != null)
             {
                 int index = row.GetValue<int>(0);
-                SoundType type = row.GetValue<SoundType>(1);
-                string name = row.GetValue<string>(2);
-                string filePath = row.GetValue<string>(3);
-                float volume = row.GetValue<float>(4);
-                bool isLoop = row.GetValue<bool>(5);
+                string text_kr = row.GetValue<string>(1);
+                string text_jp = row.GetValue<string>(2);
+                string text_en = row.GetValue<string>(3);
 
-                SoundData soundData = new SoundData(index, type, name, filePath, volume, isLoop);
-                _table.Add(soundData);
+                LocalizationData localizationData = new LocalizationData(index, text_kr, text_jp, text_en);
+                _table.Add(localizationData);
             }
         }
     }
