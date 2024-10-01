@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 
 public class CSVReader
@@ -63,11 +65,48 @@ public class CSVReader
         for (int i = 0; i < rowCount; i++)
         {
             rows[i] = new Row();
-            rows[i].cell = lines[i].Split(',');
+            rows[i].cell = ParseLine(lines[i]);
 
             // 최대 열 수 계산
             colCount = Mathf.Max(colCount, rows[i].cell.Length);
         }
+    }
+
+    private string[] ParseLine(string line)
+    {
+        List<string> result = new List<string>();
+        StringBuilder currentCell = new StringBuilder();
+        bool inQuotes = false;
+
+        for (int i = 0; i < line.Length; i++)
+        {
+            char c = line[i];
+
+            // 쌍따옴표 상태 전환. 이 상태에서 쉼표 시 split하지 않음
+            if (c == '\"')
+            {
+                inQuotes = !inQuotes;
+            }
+            // 쌍따옴표 상태가 아니면서 쉼표가 나오면 result에 추가
+            else if (c == ',' && !inQuotes)
+            {
+                result.Add(currentCell.ToString().Trim('\"'));
+                currentCell.Clear();
+            }
+            // 쌍따옴표 상태에선 currentCell에 한글자씩 추가
+            else
+            {
+                currentCell.Append(c); // 현재 셀에 문자 추가
+            }
+        }
+
+        // 마지막 셀 추가
+        if (currentCell.Length > 0)
+        {
+            result.Add(currentCell.ToString().Trim('\"'));
+        }
+
+        return result.ToArray();
     }
 
     public Row GetRow(int i)
