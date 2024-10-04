@@ -16,4 +16,9 @@ public class ResourceManager : MonoSingleton<ResourceManager>
     {
         return Resources.Load<AudioClip>(path);
     }
+
+    public GameObject LoadUIPrefab(string path)
+    {
+        return Resources.Load<GameObject>(path);
+    }
 }

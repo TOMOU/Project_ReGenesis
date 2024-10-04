@@ -57,7 +57,5 @@ public class SceneManager : MonoSingleton<SceneManager>
             Logger.LogErrorFormat("There is no type named [{0}].", sceneName);
             yield break;
         }
-
-        Logger.Log($"Complete load {sceneName}.");
     }
 }
