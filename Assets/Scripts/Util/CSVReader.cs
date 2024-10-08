@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using UnityEditor;
 using UnityEngine;
 
 public class CSVReader
@@ -41,10 +42,16 @@ public class CSVReader
         ParseCSV(data);
     }
 
-    public static CSVReader Load(string path)
+    public static CSVReader Load(string name)
     {
-        TextAsset asset = ResourceManager.Instance.LoadTextAsset(path); ;
+        TextAsset asset = ResourceManager.Instance.LoadTextAsset(name);
+        string data = System.Text.Encoding.UTF8.GetString(asset.bytes);
+        return new CSVReader(data);
+    }
 
+    public static CSVReader LoadEditor(string name)
+    {
+        TextAsset asset = AssetDatabase.LoadAssetAtPath<TextAsset>($"Assets/AssetBundles/Table/{name}.csv");
         string data = System.Text.Encoding.UTF8.GetString(asset.bytes);
         return new CSVReader(data);
     }

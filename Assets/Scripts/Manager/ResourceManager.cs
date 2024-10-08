@@ -34,7 +34,7 @@ public class ResourceManager : MonoSingleton<ResourceManager>
     public TextAsset LoadTextAsset(string path)
     {
 #if UNITY_EDITOR
-        TextAsset asset = AssetDatabase.LoadAssetAtPath<TextAsset>($"Assets/AssetBundles/{path}.csv");
+        TextAsset asset = AssetDatabase.LoadAssetAtPath<TextAsset>($"Assets/AssetBundles/Table/{path}.csv");
 #endif
 
         return asset;

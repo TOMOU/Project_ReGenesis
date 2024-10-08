@@ -24,7 +24,7 @@ public class LocalizationTable : ITable
 
     public void Load()
     {
-        string path = string.Format("Table/{0}", GetType().Name);
+        string path = string.Format("{0}", GetType().Name);
         CSVReader reader = CSVReader.Load(path);
         if (reader == null)
         {
