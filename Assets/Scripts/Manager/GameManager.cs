@@ -18,8 +18,8 @@ public class GameManager : MonoSingleton<GameManager>
         SceneRoot = transform.Find("Scene");
         UICanvasRoot = transform.Find("UI/UICanvas");
 
-        // 타이틀 씬 로드
-        SceneManager.Instance.LoadScene("Scene_Title");
+        // CI 로고 씬 로드
+        SceneManager.Instance.LoadScene("Scene_Logo");
 
         // 테스트 게임오브젝트 생성
         GameObject testObj = new GameObject("TestScript");

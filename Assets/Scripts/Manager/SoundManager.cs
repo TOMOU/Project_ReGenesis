@@ -28,6 +28,20 @@ public class SoundManager : MonoSingleton<SoundManager>
     protected override void Init()
     {
         _clipDic = new Dictionary<int, ClipCache>();
+        _sourceList = new List<AudioSource>();
+    }
+
+    protected override void Release()
+    {
+        _clipDic?.Clear();
+        _clipDic = null;
+
+        _sourceList?.Clear();
+        _sourceList = null;
+    }
+
+    public void LoadTable()
+    {
         var table = TableManager.Instance.GetTable<SoundTable>();
         if (table != null)
         {
@@ -47,17 +61,26 @@ public class SoundManager : MonoSingleton<SoundManager>
                 }
             }
         }
-
-        _sourceList = new List<AudioSource>();
     }
 
-    protected override void Release()
+    public void PlayBGM(string path)
     {
-        _clipDic?.Clear();
-        _clipDic = null;
+        if (_curBGM?.isPlaying == true)
+        {
+            _curBGM.Stop();
+        }
 
-        _sourceList?.Clear();
-        _sourceList = null;
+        _curBGM = GetOrCreateAudioSource();
+
+        // Title에서는 리소스를 번들이 아닌 다이렉트로 불러온다.
+        AudioClip clip = Resources.Load<AudioClip>(path);
+        if (clip != null)
+        {
+            _curBGM.clip = clip;
+            _curBGM.volume = 1f;
+            _curBGM.loop = true;
+            _curBGM.Play();
+        }
     }
 
     public void PlayBGM(int index)

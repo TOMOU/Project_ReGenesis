@@ -18,7 +18,7 @@ public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T
                     obj.transform.SetParent(GameManager.Instance.ManagerRoot);
                     _instance = obj.AddComponent<T>();
 
-                    Logger.Log($"Complete initialize {typeof(T).Name}");
+                    //Logger.Log($"Complete initialize {typeof(T).Name}");
                 }
 
                 _instance.Init();
@@ -39,7 +39,7 @@ public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T
             Release();
             _instance = null;
 
-            Logger.Log($"Complete destroy {typeof(T).Name}");
+            //Logger.Log($"Complete destroy {typeof(T).Name}");
         }
     }
 }

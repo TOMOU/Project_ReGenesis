@@ -7,6 +7,16 @@ public class LocalizationManager : MonoSingleton<LocalizationManager>
     protected override void Init()
     {
         _localizationDic = new Dictionary<int, LocalizationData>();
+    }
+
+    protected override void Release()
+    {
+        _localizationDic?.Clear();
+        _localizationDic = null;
+    }
+
+    public void LoadTable()
+    {
         var table = TableManager.Instance.GetTable<LocalizationTable>();
         if (table != null)
         {
@@ -15,12 +25,6 @@ public class LocalizationManager : MonoSingleton<LocalizationManager>
                 _localizationDic.Add(data.Index, data);
             }
         }
-    }
-
-    protected override void Release()
-    {
-        _localizationDic?.Clear();
-        _localizationDic = null;
     }
 
     public string GetString(int index)

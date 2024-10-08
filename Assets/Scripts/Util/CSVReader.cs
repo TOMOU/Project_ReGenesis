@@ -43,7 +43,8 @@ public class CSVReader
 
     public static CSVReader Load(string path)
     {
-        TextAsset asset = Resources.Load(path) as TextAsset;
+        TextAsset asset = ResourceManager.Instance.LoadTextAsset(path); ;
+
         string data = System.Text.Encoding.UTF8.GetString(asset.bytes);
         return new CSVReader(data);
     }

@@ -1,0 +1,6 @@
+Index,Name,Job,Position,HP,ATK,DEF,MAG,SPD,CRIT,CRIT DMG
+0,알렉산더,Tanker,Front,3240,150,250,50,80,0.05,2
+1,치우,Dealer,Front,2190,250,100,30,120,0.25,2
+2,진시황,Dealer,Middle,2320,240,90,40,110,0.25,2
+3,릴리스,Support,Back,1850,100,80,200,90,0.1,2
+4,판도라,Support,Back,1770,80,70,150,85,0.03,2
