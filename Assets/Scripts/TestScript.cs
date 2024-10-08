@@ -1,38 +1,51 @@
+using System.Text;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class TestScript : MonoBehaviour
 {
-    private int _index = 1000000;
-
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Keypad1))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            SceneManager.Instance.LoadScene("Scene_Title");
+            ShowUnitStatus();
         }
-        else if (Input.GetKeyDown(KeyCode.Keypad2))
+    }
+
+    private void ShowUnitStatus()
+    {
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < 5; i++)
         {
-            SceneManager.Instance.LoadScene("Scene_Lobby");
-        }
-        else if (Input.GetKeyDown(KeyCode.Keypad3))
-        {
-            SceneManager.Instance.LoadScene("Scene_Stage");
-        }
-        else if (Input.GetKeyDown(KeyCode.Keypad4))
-        {
-            SceneManager.Instance.LoadScene("Scene_Arena");
-        }
-        else if (Input.GetKeyDown(KeyCode.Space))
-        {
-            string str = LocalizationManager.Instance.GetString(_index++);
-            if (string.IsNullOrEmpty(str) == false)
+            UnitStatusData statusData = GetStatusData(i);
+            sb.AppendLineFormat("{0}", statusData.Name);
+            for (int grade = 1; grade <= 5; grade++)
             {
-                Logger.LogFormat("[{0}] {1}", _index, str);
+                for (int level = 1; level <= 10; level++)
+                {
+                    int hp = statusData.GetHP(grade, level);
+                    int atk = statusData.GetATK(grade, level);
+                    int def = statusData.GetDEF(grade, level);
+                    int mag = statusData.GetMAG(grade, level);
+                    sb.AppendLineFormat("{0}\t{1}\t{2}\t{3}\t{4}\t{5}", grade, level, hp, atk, def, mag);
+                }
             }
-            else
-            {
-                Logger.LogWarningFormat("[{0}] string is null", _index);
-            }
+
+            sb.AppendLine();
         }
+
+        GUIUtility.systemCopyBuffer = sb.ToString();
+    }
+
+    private UnitStatusData GetStatusData(int index)
+    {
+        var table = TableManager.Instance.GetTable<UnitStatusTable>();
+        if (table != null)
+        {
+            return table.GetData(index);
+        }
+
+        return null;
     }
 }

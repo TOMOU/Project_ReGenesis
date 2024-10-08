@@ -44,8 +44,8 @@ public class LocalizationTable : ITable
                 string text_jp = row.GetValue<string>(2);
                 string text_en = row.GetValue<string>(3);
 
-                LocalizationData localizationData = new LocalizationData(index, text_kr, text_jp, text_en);
-                _table.Add(localizationData);
+                LocalizationData data = new LocalizationData(index, text_kr, text_jp, text_en);
+                _table.Add(data);
             }
         }
     }

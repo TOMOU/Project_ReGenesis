@@ -59,8 +59,8 @@ public class SoundTable : ITable
                 float volume = row.GetValue<float>(4);
                 bool isLoop = row.GetValue<bool>(5);
 
-                SoundData soundData = new SoundData(index, type, name, filePath, volume, isLoop);
-                _table.Add(soundData);
+                SoundData data = new SoundData(index, type, name, filePath, volume, isLoop);
+                _table.Add(data);
             }
         }
     }
