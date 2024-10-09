@@ -21,6 +21,5 @@ public class UILocalization : MonoBehaviour
     private void RefreshText()
     {
         _text.text = LocalizationManager.Instance.GetString(_index);
-        Logger.Log(LocalizationManager.Instance.GetString(_index));
     }
 }

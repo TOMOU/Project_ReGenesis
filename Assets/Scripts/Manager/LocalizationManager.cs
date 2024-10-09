@@ -34,7 +34,7 @@ public class LocalizationManager : MonoSingleton<LocalizationManager>
             return ConvertKeyword(data.Text_KR);
         }
 
-        return string.Empty;
+        return "<color=#ff00ffff>NOT_FOUND</color>";
     }
 
     private string ConvertKeyword(string text)
