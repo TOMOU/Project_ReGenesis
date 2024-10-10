@@ -1028,7 +1028,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uD1A0\uBAA8\uC6B0"
+  m_text: "\uB2C9\uB124\uC784\uC740\uC5EC\uB35F\uAE00\uC790"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: aefb3bc6a77ccda4b9cdee1c30a89724, type: 2}
   m_sharedMaterial: {fileID: -1035669021533254901, guid: aefb3bc6a77ccda4b9cdee1c30a89724, type: 2}
@@ -2052,8 +2052,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _textPlayerLevel: {fileID: 2692398940727937063}
-  _imgPlayerExpSlider: {fileID: 0}
-  _textPlayerExpValue: {fileID: 2696770917226752662}
+  _textPlayerName: {fileID: 2696770917226752662}
+  _imgPlayerExpSlider: {fileID: 1862137147102604772}
+  _textPlayerExpValue: {fileID: 4169169514882637814}
   _btnNotice: {fileID: 407953022803828906}
   _btnQuest: {fileID: 5684450777207515726}
   _btnDictionary: {fileID: 719173177476707348}
