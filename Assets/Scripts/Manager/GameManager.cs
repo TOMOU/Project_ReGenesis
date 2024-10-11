@@ -18,6 +18,9 @@ public class GameManager : MonoSingleton<GameManager>
         SceneRoot = transform.Find("Scene");
         UICanvasRoot = transform.Find("UI/UICanvas");
 
+        // Global로 사용할 Manager 로드
+        LoadManager();
+
         // CI 로고 씬 로드
         SceneManager.Instance.LoadScene("Scene_Logo");
 
@@ -30,5 +33,19 @@ public class GameManager : MonoSingleton<GameManager>
     protected override void Release()
     {
 
+    }
+
+    private void LoadManager()
+    {
+        SceneManager sceneManager = SceneManager.Instance;
+        InputManager inputManager = InputManager.Instance;
+        UIManager uiManager = UIManager.Instance;
+        ResourceManager resourceManager = ResourceManager.Instance;
+        SoundManager soundManager = SoundManager.Instance;
+    }
+
+    public void Quit()
+    {
+        Logger.Log("Exit Game?");
     }
 }

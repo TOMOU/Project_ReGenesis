@@ -160,6 +160,7 @@ public class Panel_Lobby : UIBase
     private void OnClickWorld()
     {
         Logger.Log("OnClickWorld");
+        UIManager.Instance.Open<Panel_World>();
     }
 
     private void OnClickPost()

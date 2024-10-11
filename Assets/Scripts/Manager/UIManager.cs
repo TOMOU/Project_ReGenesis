@@ -80,17 +80,13 @@ public class UIManager : MonoSingleton<UIManager>
         return null;
     }
 
-    public T Close<T>() where T : UIBase
+    public void Close(UIBase ui)
     {
-        GameObject obj = _loadedList.Find(e => e.GetComponent<T>() != null);
-        if (obj != null)
+        if (_loadedList.Contains(ui.gameObject) == true)
         {
-            T objT = obj.GetComponent<T>();
-            objT.Close();                       // 재사용을 위핸 Close 처리
-            return objT;
+            _loadedList.Remove(ui.gameObject);
+            ui.Close();
         }
-
-        return null;
     }
 
     public void CloseAll()
@@ -100,22 +96,11 @@ public class UIManager : MonoSingleton<UIManager>
             GameObject obj = _loadedList[i];
             if (obj != null)
             {
-                UIBase objT = obj.GetComponent<UIBase>();
-                objT.Close();
-
-                Destroy(obj);
-                obj = null;
+                UIBase ui = obj.GetComponent<UIBase>();
+                ui?.Close();
             }
         }
 
         _loadedList.Clear();
-    }
-
-    [SerializeField] int _prefabListCount = 0;
-    [SerializeField] int _loadedListCount = 0;
-    private void Update()
-    {
-        _prefabListCount = _prefabList.Count;
-        _loadedListCount = _loadedList.Count;
     }
 }

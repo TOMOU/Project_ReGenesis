@@ -14,6 +14,9 @@ public abstract class SceneBase : MonoBehaviour
         // 로드되었던 UI 삭제
         UIManager.Instance.CloseAll();
 
+        // Escape키에 연결되었던 UI 리스트 삭제
+        InputManager.Instance.OnRemoveOpenedUIAll();
+
         // Scene 오브젝트 삭제
         Destroy(gameObject);
     }
