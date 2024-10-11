@@ -23,11 +23,6 @@ public class GameManager : MonoSingleton<GameManager>
 
         // CI 로고 씬 로드
         SceneManager.Instance.LoadScene("Scene_Logo");
-
-        // 테스트 게임오브젝트 생성
-        GameObject testObj = new GameObject("TestScript");
-        testObj.AddComponent<TestScript>();
-        DontDestroyOnLoad(testObj);
     }
 
     protected override void Release()

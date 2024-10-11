@@ -32,8 +32,8 @@ public class Panel_Lobby : UIBase
     [SerializeField] private TextMeshProUGUI _textCashValue;
 
     [Header("- 옵션 버튼 (우상단)")]
-    [SerializeField] private Button _btnPost;
-    [SerializeField] private Button _btnOption;
+    [SerializeField] private Button _btnMail;
+    [SerializeField] private Button _btnSetting;
 
     public override void Open()
     {
@@ -65,8 +65,8 @@ public class Panel_Lobby : UIBase
 
         _btnWorld.onClick.AddListener(OnClickWorld);
 
-        _btnPost.onClick.AddListener(OnClickPost);
-        _btnOption.onClick.AddListener(OnClickOption);
+        _btnMail.onClick.AddListener(OnClickMail);
+        _btnSetting.onClick.AddListener(OnClickSetting);
     }
 
     private void ReleaseButton()
@@ -84,8 +84,8 @@ public class Panel_Lobby : UIBase
 
         _btnWorld?.onClick.RemoveAllListeners();
 
-        _btnPost?.onClick.RemoveAllListeners();
-        _btnOption?.onClick.RemoveAllListeners();
+        _btnMail?.onClick.RemoveAllListeners();
+        _btnSetting?.onClick.RemoveAllListeners();
     }
 
     /// <summary>
@@ -114,62 +114,61 @@ public class Panel_Lobby : UIBase
 
     private void OnClickNotice()
     {
-        Logger.Log("OnClickNotice");
+        UIManager.Instance.Open<Panel_Notice>();
     }
 
     private void OnClickQuest()
     {
-        Logger.Log("OnClickQuest");
+        UIManager.Instance.Open<Panel_Quest>();
     }
 
     private void OnClickDictionary()
     {
-        Logger.Log("OnClickDictionary");
+        UIManager.Instance.Open<Panel_Dictionary>();
     }
 
     private void OnClickShop()
     {
-        Logger.Log("OnClickShop");
+        UIManager.Instance.Open<Panel_Shop>();
     }
 
     private void OnClickCharacter()
     {
-        Logger.Log("OnClickCharacter");
+        UIManager.Instance.Open<Panel_Character>();
     }
 
     private void OnClickInventory()
     {
-        Logger.Log("OnClickInventory");
+        UIManager.Instance.Open<Panel_Inventory>();
     }
 
     private void OnClickStorybook()
     {
-        Logger.Log("OnClickStorybook");
+        UIManager.Instance.Open<Panel_StoryBook>();
     }
 
     private void OnClickGuild()
     {
-        Logger.Log("OnClickGuild");
+        UIManager.Instance.Open<Panel_Guild>();
     }
 
     private void OnClickGacha()
     {
-        Logger.Log("OnClickGacha");
+        UIManager.Instance.Open<Panel_Gacha>();
     }
 
     private void OnClickWorld()
     {
-        Logger.Log("OnClickWorld");
         UIManager.Instance.Open<Panel_World>();
     }
 
-    private void OnClickPost()
+    private void OnClickMail()
     {
-        Logger.Log("OnClickPost");
+        UIManager.Instance.Open<Panel_Mail>();
     }
 
-    private void OnClickOption()
+    private void OnClickSetting()
     {
-        Logger.Log("OnClickOption");
+        UIManager.Instance.Open<Panel_Setting>();
     }
 }

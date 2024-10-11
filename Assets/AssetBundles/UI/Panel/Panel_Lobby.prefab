@@ -840,7 +840,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0b7ce9c417efa147a8f53c4f31e71ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _index: 10
+  _index: 10004
 --- !u!1 &808315246265621359
 GameObject:
   m_ObjectHideFlags: 0
@@ -2068,8 +2068,8 @@ MonoBehaviour:
   _textStaminaValue: {fileID: 850949591187372018}
   _textGoldValue: {fileID: 7564634666326132787}
   _textCashValue: {fileID: 6906390976304064639}
-  _btnPost: {fileID: 7031273969901598571}
-  _btnOption: {fileID: 8483155813282796883}
+  _btnMail: {fileID: 7031273969901598571}
+  _btnSetting: {fileID: 8483155813282796883}
 --- !u!1 &3169776241291112896
 GameObject:
   m_ObjectHideFlags: 0
@@ -4231,7 +4231,7 @@ GameObject:
   - component: {fileID: 6667068570636805591}
   - component: {fileID: 7031273969901598571}
   m_Layer: 5
-  m_Name: MailPost
+  m_Name: Mail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5881,7 +5881,7 @@ GameObject:
   - component: {fileID: 50026833299295443}
   - component: {fileID: 8483155813282796883}
   m_Layer: 5
-  m_Name: Option
+  m_Name: Setting
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

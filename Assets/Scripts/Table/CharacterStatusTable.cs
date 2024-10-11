@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-public class UnitStatusData
+public class CharacterStatusData
 {
     public int Index { get; private set; }
     public string Name { get; private set; }
@@ -24,7 +24,7 @@ public class UnitStatusData
     public float CRIT { get; private set; }
     public float CRIT_DMG { get; private set; }
 
-    public UnitStatusData(int index, string name, JobType jobType, Position position, float hp, float hp_level, float hp_grade, float atk, float atk_level, float atk_grade, float def, float def_level, float def_grade, float mag, float mag_level, float mag_grade, float spd, float crit, float crit_dmg)
+    public CharacterStatusData(int index, string name, JobType jobType, Position position, float hp, float hp_level, float hp_grade, float atk, float atk_level, float atk_grade, float def, float def_level, float def_grade, float mag, float mag_level, float mag_grade, float spd, float crit, float crit_dmg)
     {
         Index = index;
         Name = name;
@@ -96,10 +96,10 @@ public enum Position
     BACK
 }
 
-public class UnitStatusTable : ITable
+public class CharacterStatusTable : ITable
 {
-    private List<UnitStatusData> _table;
-    public ReadOnlyCollection<UnitStatusData> Table => _table.AsReadOnly();
+    private List<CharacterStatusData> _table;
+    public ReadOnlyCollection<CharacterStatusData> Table => _table.AsReadOnly();
 
     public void Load()
     {
@@ -111,7 +111,7 @@ public class UnitStatusTable : ITable
             return;
         }
 
-        _table = new List<UnitStatusData>();
+        _table = new List<CharacterStatusData>();
 
         for (int i = 1; i < reader.rowCount; i++)
         {
@@ -143,7 +143,7 @@ public class UnitStatusTable : ITable
                 float crit = row.GetValue<float>(17);
                 float crit_dmg = row.GetValue<float>(18);
 
-                UnitStatusData data = new UnitStatusData(
+                CharacterStatusData data = new CharacterStatusData(
                     index,
                     name,
                     jobType,
@@ -173,9 +173,9 @@ public class UnitStatusTable : ITable
         }
     }
 
-    public UnitStatusData GetData(int index)
+    public CharacterStatusData GetData(int index)
     {
-        UnitStatusData data = _table.Find(e => e.Index == index);
+        CharacterStatusData data = _table.Find(e => e.Index == index);
         return data;
     }
 }

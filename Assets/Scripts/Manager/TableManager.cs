@@ -22,7 +22,7 @@ public class TableManager : MonoSingleton<TableManager>
 
         AddTableDic<SoundTable>();
         AddTableDic<LocalizationTable>();
-        AddTableDic<UnitStatusTable>();
+        AddTableDic<CharacterStatusTable>();
     }
 
     private void AddTableDic<T>() where T : ITable, new()
