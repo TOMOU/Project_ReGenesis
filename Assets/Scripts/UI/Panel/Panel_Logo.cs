@@ -13,12 +13,6 @@ public class Panel_Logo : UIBase
             Logger.LogError("CI Logo Animation이 캐싱되지 않았습니다.");
             return;
         }
-
-        _ciAnimation.clip.AddEvent(new AnimationEvent()
-        {
-            time = _ciAnimation.clip.length,
-            functionName = "OnEventAnimationEnd"
-        });
     }
 
     public override void Close()
