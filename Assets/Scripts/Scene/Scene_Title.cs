@@ -5,7 +5,7 @@ public class Scene_Title : SceneBase
         base.Initialize();
 
         SoundManager.Instance.PlayBGM("Sound/BGM/Eternal Light");
-        UIManager.Instance.Open<Panel_Title>(false);
+        UIManager.Instance.Open<Panel_Title>();
     }
 
     public override void Release()

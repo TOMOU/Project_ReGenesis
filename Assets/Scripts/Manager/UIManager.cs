@@ -21,7 +21,7 @@ public class UIManager : MonoSingleton<UIManager>
         _loadedList = null;
     }
 
-    public T Open<T>(bool isAssetBundle = true) where T : UIBase
+    public T Open<T>() where T : UIBase
     {
         bool isPanel = typeof(T).Name.StartsWith("Panel");
 
@@ -53,7 +53,9 @@ public class UIManager : MonoSingleton<UIManager>
         // 새로 로드
         string path = string.Format("UI/{0}/{1}", isPanel ? "Panel" : "Popup", typeof(T).Name);
         GameObject prefab = ResourceManager.Instance.LoadUIPrefab(path);
-        if (isAssetBundle == false)
+
+        // prefab이 null인 경우 Resource 폴더에 있는 UI이다.
+        if (prefab == null)
         {
             prefab = Resources.Load<GameObject>(path);
         }

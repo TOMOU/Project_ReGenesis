@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 
 public class GameManager : MonoSingleton<GameManager>
@@ -39,8 +40,20 @@ public class GameManager : MonoSingleton<GameManager>
         SoundManager soundManager = SoundManager.Instance;
     }
 
-    public void Quit()
+    public void ShowMessage_GameQuit()
     {
-        Logger.Log("Exit Game?");
+        // 7: 게임 종료
+        // 8: 게임을 종료하시겠습니까?
+        Panel_MessageBox message = UIManager.Instance.Open<Panel_MessageBox>();
+        message.ShowMessage(LocalizationManager.Instance.GetString(7), LocalizationManager.Instance.GetString(8), GameQuit, null);
+    }
+
+    private void GameQuit()
+    {
+#if UNITY_EDITOR
+        EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
     }
 }

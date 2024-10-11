@@ -38,10 +38,15 @@ public class InputManager : MonoSingleton<InputManager>
         // 기본 UI만 남았을 때는 종료
         if (_uiStack.Count <= 1)
         {
-            GameManager.Instance.Quit();
+            GameManager.Instance.ShowMessage_GameQuit();
             return;
         }
 
+        OnRemoveOpenedUI();
+    }
+
+    public void OnRemoveOpenedUI()
+    {
         // 최상단에 Open된 UI를 닫는다.
         UIBase ui = _uiStack.Peek();
         if (ui != null)

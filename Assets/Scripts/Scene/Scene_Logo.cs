@@ -4,7 +4,7 @@ public class Scene_Logo : SceneBase
     {
         base.Initialize();
 
-        UIManager.Instance.Open<Panel_Logo>(false);
+        UIManager.Instance.Open<Panel_Logo>();
     }
 
     public override void Release()
