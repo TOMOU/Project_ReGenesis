@@ -13,6 +13,11 @@ public class ResourceManager : MonoSingleton<ResourceManager>
 
     }
 
+    /// <summary>
+    /// AudioClip을 불러온다.
+    /// </summary>
+    /// <param name="fileName">음원 파일의 이름</param>
+    /// <returns></returns>
     public AudioClip LoadAudioClip(string fileName)
     {
 #if UNITY_EDITOR
@@ -22,6 +27,11 @@ public class ResourceManager : MonoSingleton<ResourceManager>
         return clip;
     }
 
+    /// <summary>
+    /// UI Prefab을 불러온다.
+    /// </summary>
+    /// <param name="path">UI Prefab의 경로.<br>ex) UI/Panel/Panel_Title</br></param>
+    /// <returns></returns>
     public GameObject LoadUIPrefab(string path)
     {
 #if UNITY_EDITOR
@@ -31,6 +41,11 @@ public class ResourceManager : MonoSingleton<ResourceManager>
         return prefab;
     }
 
+    /// <summary>
+    /// 테이블 CSV파일을 불러온다.
+    /// </summary>
+    /// <param name="path"></param>
+    /// <returns></returns>
     public TextAsset LoadTextAsset(string path)
     {
 #if UNITY_EDITOR

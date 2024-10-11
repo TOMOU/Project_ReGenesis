@@ -16,6 +16,9 @@ public class TableManager : MonoSingleton<TableManager>
         _tableDic = null;
     }
 
+    /// <summary>
+    /// 테이블을 로드한다.<br>타이틀 까지는 에셋번들 등을 로드하지 않기 때문에...</br>
+    /// </summary>
     public void LoadTable()
     {
         _tableDic = new Dictionary<Type, ITable>();
@@ -25,6 +28,10 @@ public class TableManager : MonoSingleton<TableManager>
         AddTableDic<CharacterStatusTable>();
     }
 
+    /// <summary>
+    /// _tableDic에 T:ITable 데이터를 저장한다.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     private void AddTableDic<T>() where T : ITable, new()
     {
         T table = new T();
@@ -32,6 +39,11 @@ public class TableManager : MonoSingleton<TableManager>
         _tableDic[typeof(T)] = table;
     }
 
+    /// <summary>
+    /// 외부에서 T:ITable 데이터를 읽는다.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <returns></returns>
     public T GetTable<T>() where T : class, ITable
     {
         if (_tableDic.TryGetValue(typeof(T), out ITable table))

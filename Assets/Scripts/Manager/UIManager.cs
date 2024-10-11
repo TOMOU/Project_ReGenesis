@@ -21,6 +21,11 @@ public class UIManager : MonoSingleton<UIManager>
         _loadedList = null;
     }
 
+    /// <summary>
+    /// UI를 Open한다.
+    /// </summary>
+    /// <typeparam name="T">UI의 클래스</typeparam>
+    /// <returns></returns>
     public T Open<T>() where T : UIBase
     {
         bool isPanel = typeof(T).Name.StartsWith("Panel");
@@ -82,6 +87,10 @@ public class UIManager : MonoSingleton<UIManager>
         return null;
     }
 
+    /// <summary>
+    /// UI를 Close 처리한다.
+    /// </summary>
+    /// <param name="ui"></param>
     public void Close(UIBase ui)
     {
         if (_loadedList.Contains(ui.gameObject) == true)
@@ -91,6 +100,9 @@ public class UIManager : MonoSingleton<UIManager>
         }
     }
 
+    /// <summary>
+    /// 모든 UI를 Close 처리한다.<br>주로 씬 로드 전에 호출한다.</br>
+    /// </summary>
     public void CloseAll()
     {
         for (int i = 0; i < _loadedList.Count; i++)

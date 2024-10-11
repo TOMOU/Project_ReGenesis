@@ -15,6 +15,10 @@ public class SceneManager : MonoSingleton<SceneManager>
 
     }
 
+    /// <summary>
+    /// 씬 로드를 요청한다.
+    /// </summary>
+    /// <param name="sceneName">로드할 씬의 이름<br>ex) Scene_Title</br></param>
     public void LoadScene(string sceneName)
     {
         StartCoroutine(coLoadScene(sceneName));

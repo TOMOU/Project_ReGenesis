@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using UnityEditor;
 using UnityEngine;
 
 public class CSVReader
@@ -42,25 +41,28 @@ public class CSVReader
         ParseCSV(data);
     }
 
+    /// <summary>
+    /// 에셋번들 경로에서 CSV 파일을 읽는다.<br>여기서 가공된 데이터를 기반으로 테이블을 저장한다.</br>
+    /// </summary>
+    /// <param name="name"></param>
+    /// <returns></returns>
     public static CSVReader Load(string name)
     {
         TextAsset asset = ResourceManager.Instance.LoadTextAsset(name);
+        if (asset == null)
+        {
+            Logger.LogErrorFormat("Failed to load CSV File: {0}", name);
+            return null;
+        }
+
         string data = System.Text.Encoding.UTF8.GetString(asset.bytes);
         return new CSVReader(data);
     }
 
-    public static CSVReader LoadEditor(string name)
-    {
-        TextAsset asset = AssetDatabase.LoadAssetAtPath<TextAsset>($"Assets/AssetBundles/Table/{name}.csv");
-        string data = System.Text.Encoding.UTF8.GetString(asset.bytes);
-        return new CSVReader(data);
-    }
-
-    public static CSVReader Load(TextAsset asset)
-    {
-        return new CSVReader(asset.text);
-    }
-
+    /// <summary>
+    /// CSV 데이터를 행 단위로 분리하여 각 행을 Row 객체로 저장한다.
+    /// </summary>
+    /// <param name="data"></param>
     private void ParseCSV(string data)
     {
         // UTF-8 BOM 제거 및 줄바꿈
@@ -80,6 +82,13 @@ public class CSVReader
         }
     }
 
+    /// <summary>
+    /// 주어진 CSV 행 데이터를 셀 단위로 분리한다.
+    /// <br>쌍따옴표는 무시.</br>
+    /// <br>쉼표는 구분자로 사용한다.</br>
+    /// </summary>
+    /// <param name="line"></param>
+    /// <returns></returns>
     private string[] ParseLine(string line)
     {
         List<string> result = new List<string>();
@@ -117,6 +126,11 @@ public class CSVReader
         return result.ToArray();
     }
 
+    /// <summary>
+    /// 지정된 인덱스에 해당하는 Row을 반환한다.
+    /// </summary>
+    /// <param name="i"></param>
+    /// <returns></returns>
     public Row GetRow(int i)
     {
         return (i >= 0 && i < rowCount) ? rows[i] : null;

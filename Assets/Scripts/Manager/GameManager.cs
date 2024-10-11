@@ -15,14 +15,19 @@ public class GameManager : MonoSingleton<GameManager>
 
     protected override void Init()
     {
+        // 게임의 초기 세팅
+        Application.targetFrameRate = 60;
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
+
+        // Transform Root를 캐싱.
         ManagerRoot = transform.Find("Manager");
         SceneRoot = transform.Find("Scene");
         UICanvasRoot = transform.Find("UI/UICanvas");
 
-        // Global로 사용할 Manager 로드
+        // 첫 시작부터 미리 로드할 Manager들을 불러온다.
         LoadManager();
 
-        // CI 로고 씬 로드
+        // 초기 세팅동작이 완료되었으니 Logo 화면으로 이동.
         SceneManager.Instance.LoadScene("Scene_Logo");
     }
 
@@ -31,6 +36,9 @@ public class GameManager : MonoSingleton<GameManager>
 
     }
 
+    /// <summary>
+    /// 첫 시작부터 사용될 Manager 클래스를 미리 로드한다.
+    /// </summary>
     private void LoadManager()
     {
         SceneManager sceneManager = SceneManager.Instance;
@@ -40,6 +48,9 @@ public class GameManager : MonoSingleton<GameManager>
         SoundManager soundManager = SoundManager.Instance;
     }
 
+    /// <summary>
+    /// 게임 종료 메세지를 출력한다.
+    /// </summary>
     public void ShowMessage_GameQuit()
     {
         // 7: 게임 종료
@@ -48,6 +59,9 @@ public class GameManager : MonoSingleton<GameManager>
         message.ShowMessage(LocalizationManager.Instance.GetString(7), LocalizationManager.Instance.GetString(8), GameQuit, null);
     }
 
+    /// <summary>
+    /// 게임 종료
+    /// </summary>
     private void GameQuit()
     {
 #if UNITY_EDITOR

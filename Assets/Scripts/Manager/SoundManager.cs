@@ -40,6 +40,9 @@ public class SoundManager : MonoSingleton<SoundManager>
         _sourceList = null;
     }
 
+    /// <summary>
+    /// 테이블을 로드한다.<br>타이틀 까지는 에셋번들 등을 로드하지 않기 때문에...</br>
+    /// </summary>
     public void LoadTable()
     {
         var table = TableManager.Instance.GetTable<SoundTable>();
@@ -63,6 +66,10 @@ public class SoundManager : MonoSingleton<SoundManager>
         }
     }
 
+    /// <summary>
+    /// 재생경로에 기반한 BGM을 재생한다.<br>주로 Resources 폴더 내의 BGM을 재생할 때 사용한다.</br>
+    /// </summary>
+    /// <param name="path">재생할 BGM의 경로<br>ex) Sound/BGM/Eternal Light</br></param>
     public void PlayBGM(string path)
     {
         if (_curBGM?.isPlaying == true)
@@ -83,6 +90,10 @@ public class SoundManager : MonoSingleton<SoundManager>
         }
     }
 
+    /// <summary>
+    /// index값에 기반한 BGM을 재생한다.
+    /// </summary>
+    /// <param name="index">재생할 BGM의 index</param>
     public void PlayBGM(int index)
     {
         if (_curBGM?.isPlaying == true)
@@ -94,12 +105,20 @@ public class SoundManager : MonoSingleton<SoundManager>
         PlayAudio(index, _curBGM);
     }
 
+    /// <summary>
+    /// index값에 기반한 일회성 사운드를 재생한다.
+    /// </summary>
+    /// <param name="index"></param>
     public void PlaySound(int index)
     {
         var source = GetOrCreateAudioSource();
         PlayAudio(index, source);
     }
 
+    /// <summary>
+    /// SoundManager에 풀링된 미사용되는 AudioSource를 찾고, 없다면 새로 추가.
+    /// </summary>
+    /// <returns></returns>
     private AudioSource GetOrCreateAudioSource()
     {
         var source = _sourceList.Find(e => !e.isPlaying);
@@ -112,6 +131,11 @@ public class SoundManager : MonoSingleton<SoundManager>
         return source;
     }
 
+    /// <summary>
+    /// 풀링된 사운드 리소스를 찾아 재생한다.
+    /// </summary>
+    /// <param name="index"></param>
+    /// <param name="source"></param>
     private void PlayAudio(int index, AudioSource source)
     {
         if (_clipDic.TryGetValue(index, out var cache))
