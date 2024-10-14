@@ -6,12 +6,12 @@ public class SoundManager : MonoSingleton<SoundManager>
     private class ClipCache
     {
         public string Name { get; }
-        public SoundType Type { get; }
+        public Constant.SoundType Type { get; }
         public AudioClip Clip { get; }
         public float Volume { get; }
         public bool IsLoop { get; }
 
-        public ClipCache(string name, SoundType type, AudioClip clip, float volume, bool isLoop)
+        public ClipCache(string name, Constant.SoundType type, AudioClip clip, float volume, bool isLoop)
         {
             Name = name;
             Type = type;
@@ -51,7 +51,7 @@ public class SoundManager : MonoSingleton<SoundManager>
             foreach (var data in table.Table)
             {
                 int index = data.Index;
-                SoundType type = data.Type;
+                Constant.SoundType type = data.Type;
                 string name = data.Name;
                 string filePath = data.FilePath;
                 float volume = data.Volume;
