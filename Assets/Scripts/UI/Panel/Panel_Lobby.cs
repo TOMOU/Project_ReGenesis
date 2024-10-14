@@ -159,7 +159,8 @@ public class Panel_Lobby : UIBase
 
     private void OnClickWorld()
     {
-        UIManager.Instance.Open<Panel_World>();
+        //UIManager.Instance.Open<Panel_World>();
+        SceneManager.Instance.LoadScene("Scene_TestBattle");
     }
 
     private void OnClickMail()

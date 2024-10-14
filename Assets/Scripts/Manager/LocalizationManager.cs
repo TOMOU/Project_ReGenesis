@@ -31,7 +31,7 @@ public class LocalizationManager : MonoSingleton<LocalizationManager>
     }
 
     /// <summary>
-    /// index에 기반하여 텍스트를 불러온다.<br>index값이 null이거나 텍스트가 빈값이면 NOT_FOUND 출력.</br>
+    /// index에 기반하여 텍스트를 불러온다.<br>index값이 null이거나 텍스트가 빈값이면 index 출력.</br>
     /// </summary>
     /// <param name="index">불러올 텍스트의 index</param>
     /// <returns></returns>
@@ -42,13 +42,13 @@ public class LocalizationManager : MonoSingleton<LocalizationManager>
             string value = data.Text_KR;
             if (string.IsNullOrEmpty(value) == true)
             {
-                return "<color=#ff00ffff>NOT_FOUND : EMPTY</color>";
+                return string.Format("<color=#ff00ffff>{0}</color>", index);
             }
 
             return ConvertKeyword(value);
         }
 
-        return "<color=#ff00ffff>NOT_FOUND : NULL</color>";
+        return string.Format("<color=#ff00ffff>{0}</color>", index);
     }
 
     private string ConvertKeyword(string text)
