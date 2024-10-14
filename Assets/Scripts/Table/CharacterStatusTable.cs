@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 // ==================================================
 // 자동 생성된 코드입니다. 임의로 수정하지 마세요.
 // ==================================================
-public class UnitStatusData
+public class CharacterStatusData
 {
 	/// <summary>
 	/// 유닛 고유 인덱스
@@ -17,11 +17,11 @@ public class UnitStatusData
 	/// <summary>
 	/// 직업 타입 (탱커, 딜러, 서포터)
 	/// </summary>
-	public Constant.UnitJobType Job;
+	public ReGenesis.Enums.Character.JobType JobType;
 	/// <summary>
 	/// 유닛의 배치 위치
 	/// </summary>
-	public Constant.UnitPosition Position;
+	public ReGenesis.Enums.Character.FormationType FormationType;
 	/// <summary>
 	/// 기본 체력
 	/// </summary>
@@ -83,12 +83,12 @@ public class UnitStatusData
 	/// </summary>
 	public float CRIT_DMG;
 
-	public UnitStatusData(int index, string name, Constant.UnitJobType job, Constant.UnitPosition position, float hp, float hp_level, float hp_grade, float atk, float atk_level, float atk_grade, float def, float def_level, float def_grade, float mag, float mag_level, float mag_grade, float spd, float crit, float crit_dmg)
+	public CharacterStatusData(int index, string name, ReGenesis.Enums.Character.JobType jobtype, ReGenesis.Enums.Character.FormationType formationtype, float hp, float hp_level, float hp_grade, float atk, float atk_level, float atk_grade, float def, float def_level, float def_grade, float mag, float mag_level, float mag_grade, float spd, float crit, float crit_dmg)
 	{
 		Index = index;
 		Name = name;
-		Job = job;
-		Position = position;
+		JobType = jobtype;
+		FormationType = formationtype;
 		HP = hp;
 		HP_Level = hp_level;
 		HP_Grade = hp_grade;
@@ -107,10 +107,10 @@ public class UnitStatusData
 	}
 }
 
-public class UnitStatusTable : ITable
+public class CharacterStatusTable : ITable
 {
-	private List<UnitStatusData> _table;
-	public ReadOnlyCollection<UnitStatusData> Table => _table.AsReadOnly();
+	private List<CharacterStatusData> _table;
+	public ReadOnlyCollection<CharacterStatusData> Table => _table.AsReadOnly();
 
 	public void Load()
 	{
@@ -122,7 +122,7 @@ public class UnitStatusTable : ITable
 			return;
 		}
 
-		_table = new List<UnitStatusData>();
+		_table = new List<CharacterStatusData>();
 
 		for (int i = 3; i < reader.rowCount; i++)
 		{
@@ -131,8 +131,8 @@ public class UnitStatusTable : ITable
 			{
 				int index = row.GetValue<int>(0);
 				string name = row.GetValue<string>(1);
-				Constant.UnitJobType job = row.GetValue<Constant.UnitJobType>(2);
-				Constant.UnitPosition position = row.GetValue<Constant.UnitPosition>(3);
+				ReGenesis.Enums.Character.JobType jobtype = row.GetValue<ReGenesis.Enums.Character.JobType>(2);
+				ReGenesis.Enums.Character.FormationType formationtype = row.GetValue<ReGenesis.Enums.Character.FormationType>(3);
 				float hp = row.GetValue<float>(4);
 				float hp_level = row.GetValue<float>(5);
 				float hp_grade = row.GetValue<float>(6);
@@ -149,7 +149,7 @@ public class UnitStatusTable : ITable
 				float crit = row.GetValue<float>(17);
 				float crit_dmg = row.GetValue<float>(18);
 
-				UnitStatusData data = new UnitStatusData(index, name, job, position, hp, hp_level, hp_grade, atk, atk_level, atk_grade, def, def_level, def_grade, mag, mag_level, mag_grade, spd, crit, crit_dmg);
+				CharacterStatusData data = new CharacterStatusData(index, name, jobtype, formationtype, hp, hp_level, hp_grade, atk, atk_level, atk_grade, def, def_level, def_grade, mag, mag_level, mag_grade, spd, crit, crit_dmg);
 				_table.Add(data);
 			}
 		}

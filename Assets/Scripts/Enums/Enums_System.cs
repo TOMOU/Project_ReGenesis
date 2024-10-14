@@ -1,4 +1,4 @@
-namespace Constant
+namespace ReGenesis.Enums.System
 {
     public enum LOGLEVEL
     {
@@ -7,22 +7,5 @@ namespace Constant
         WARNING,                // Log, Warning
         ERROR,                  // Log, Warning, Error
         ALL                     // 모든 로그를 출력한다.
-    }
-
-    public enum UnitJobType
-    {
-
-    }
-
-    public enum UnitPosition
-    {
-
-    }
-
-    public enum SoundType
-    {
-        BGM,
-        SFX,
-        Voice
     }
 }

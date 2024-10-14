@@ -1,5 +1,5 @@
 사운드 고유 인덱스,"사운드 타입 (BGM, SFX, Voice 등)",사운드 이름,사운드 파일 이름 또는 경로,볼륨 크기 (0 ~ 1f),루프 재생 여부,
-int,Constant.SoundType,string,string,float,bool,
+int,ReGenesis.Enums.Sound.SoundType,string,string,float,bool,
 Index,Type,Name,FilePath,Volume,IsLoop,Description
 0,BGM,Eternal Light,Sound/BGM/Eternal Light,1,TRUE,타이틀 BGM
 1,BGM,Hidden Adversary,Sound/BGM/Hidden Adversary,1,TRUE,시나리오 BGM

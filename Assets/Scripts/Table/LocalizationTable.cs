@@ -55,9 +55,9 @@ public class LocalizationTable : ITable
 			if (row != null)
 			{
 				int index = row.GetValue<int>(0);
-				string text_kr = row.GetValue<string>(1);
-				string text_jp = row.GetValue<string>(2);
-				string text_en = row.GetValue<string>(3);
+				string text_kr = row.GetValue<string>(2);
+				string text_jp = row.GetValue<string>(3);
+				string text_en = row.GetValue<string>(4);
 
 				LocalizationData data = new LocalizationData(index, text_kr, text_jp, text_en);
 				_table.Add(data);

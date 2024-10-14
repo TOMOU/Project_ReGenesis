@@ -1,6 +1,6 @@
 유닛 고유 인덱스,유닛 이름,"직업 타입 (탱커, 딜러, 서포터)",유닛의 배치 위치,기본 체력,레벨당 체력,등급당 체력,기본 공격력,레벨당 공격력,등급당 공격력,기본 방어력,레벨당 방어력,등급당 방어력,기본 마법 방어력,레벨당 마법 방어력,등급당 마법 방어력,이동 속도,치명타 확률,치명타 데미지 배율
-int,string,Constant.UnitJobType,Constant.UnitPosition,float,float,float,float,float,float,float,float,float,float,float,float,float,float,float
-Index,Name,Job,Position,HP,HP_Level,HP_Grade,ATK,ATK_Level,ATK_Grade,DEF,DEF_Level,DEF_Grade,MAG,MAG_Level,MAG_Grade,SPD,CRIT,CRIT_DMG
+int,string,ReGenesis.Enums.Character.JobType,ReGenesis.Enums.Character.FormationType,float,float,float,float,float,float,float,float,float,float,float,float,float,float,float
+Index,Name,JobType,FormationType,HP,HP_Level,HP_Grade,ATK,ATK_Level,ATK_Grade,DEF,DEF_Level,DEF_Grade,MAG,MAG_Level,MAG_Grade,SPD,CRIT,CRIT_DMG
 0,알렉산더,Tanker,Front,3240,0.15,0.02,150,0.09,0.02,250,0.05,0,50,0.05,0,80,0.05,2
 1,치우,Dealer,Front,2190,0.09,0.019,250,0.09,0.018,100,0.05,0,30,0.05,0,120,0.25,2
 2,진시황,Dealer,Middle,2320,0.09,0.019,240,0.09,0.018,90,0.05,0,40,0.05,0,110,0.25,2

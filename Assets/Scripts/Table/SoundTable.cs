@@ -13,7 +13,7 @@ public class SoundData
 	/// <summary>
 	/// 사운드 타입 (BGM, SFX, Voice 등)
 	/// </summary>
-	public Constant.SoundType Type;
+	public ReGenesis.Enums.Sound.SoundType Type;
 	/// <summary>
 	/// 사운드 이름
 	/// </summary>
@@ -31,7 +31,7 @@ public class SoundData
 	/// </summary>
 	public bool IsLoop;
 
-	public SoundData(int index, Constant.SoundType type, string name, string filepath, float volume, bool isloop)
+	public SoundData(int index, ReGenesis.Enums.Sound.SoundType type, string name, string filepath, float volume, bool isloop)
 	{
 		Index = index;
 		Type = type;
@@ -65,7 +65,7 @@ public class SoundTable : ITable
 			if (row != null)
 			{
 				int index = row.GetValue<int>(0);
-				Constant.SoundType type = row.GetValue<Constant.SoundType>(1);
+				ReGenesis.Enums.Sound.SoundType type = row.GetValue<ReGenesis.Enums.Sound.SoundType>(1);
 				string name = row.GetValue<string>(2);
 				string filepath = row.GetValue<string>(3);
 				float volume = row.GetValue<float>(4);
