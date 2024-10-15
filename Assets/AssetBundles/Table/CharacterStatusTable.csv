@@ -1,8 +1,8 @@
-유닛 고유 인덱스,유닛 이름,"직업 타입 (탱커, 딜러, 서포터)",유닛의 배치 위치,유닛의 일반 공격타입 (근접/원거리),기본 체력,레벨당 체력,등급당 체력,기본 공격력,레벨당 공격력,등급당 공격력,기본 방어력,레벨당 방어력,등급당 방어력,기본 마법 방어력,레벨당 마법 방어력,등급당 마법 방어력,이동 속도,치명타 확률,치명타 데미지 배율
-int,string,ReGenesis.Enums.Character.JobType,ReGenesis.Enums.Character.FormationType,ReGenesis.Enums.Character.AttackType,float,float,float,float,float,float,float,float,float,float,float,float,float,float,float
-Index,Name,JobType,FormationType,AttackType,HP,HP_Level,HP_Grade,ATK,ATK_Level,ATK_Grade,DEF,DEF_Level,DEF_Grade,MAG,MAG_Level,MAG_Grade,SPD,CRIT,CRIT_DMG
-0,알렉산더,Tanker,Front,Melee,3240,0.15,0.02,150,0.09,0.02,250,0.05,0,50,0.05,0,80,0.05,2
-1,치우,Dealer,Front,Melee,2190,0.09,0.019,250,0.09,0.018,100,0.05,0,30,0.05,0,120,0.25,2
-2,진시황,Dealer,Middle,Range,2320,0.09,0.019,240,0.09,0.018,90,0.05,0,40,0.05,0,110,0.25,2
-3,릴리스,Support,Back,Range,1850,0.1,0.02,100,0.08,0.014,80,0.05,0,200,0.05,0,90,0.1,2
-4,판도라,Support,Back,Range,1770,0.06,0.019,80,0.09,0.024,70,0.04,0,150,0.04,0,85,0.03,2
+캐릭터 고유 인덱스,"직업 타입 (탱커, 딜러, 서포터)",유닛의 배치 위치,유닛의 일반 공격타입 (근접/원거리),기본 체력,레벨당 체력,등급당 체력,기본 공격력,레벨당 공격력,등급당 공격력,기본 방어력,레벨당 방어력,등급당 방어력,기본 마법 방어력,레벨당 마법 방어력,등급당 마법 방어력,이동 속도,치명타 확률,치명타 데미지 배율
+int,ReGenesis.Enums.Character.JobType,ReGenesis.Enums.Character.FormationType,ReGenesis.Enums.Character.AttackType,float,float,float,float,float,float,float,float,float,float,float,float,float,float,float
+Index,JobType,FormationType,AttackType,HP,HP_Level,HP_Grade,ATK,ATK_Level,ATK_Grade,DEF,DEF_Level,DEF_Grade,MAG,MAG_Level,MAG_Grade,SPD,CRIT,CRIT_DMG
+100000,Support,Back,Range,1850,0.1,0.02,100,0.08,0.014,80,0.05,0,200,0.05,0,90,0.1,2
+100001,Dealer,Front,Melee,2190,0.09,0.019,250,0.09,0.018,100,0.05,0,30,0.05,0,120,0.25,2
+100002,Tanker,Front,Melee,3240,0.15,0.02,150,0.09,0.02,250,0.05,0,50,0.05,0,80,0.05,2
+100003,Dealer,Middle,Range,2320,0.09,0.019,240,0.09,0.018,90,0.05,0,40,0.05,0,110,0.25,2
+100004,Support,Back,Range,1770,0.06,0.019,80,0.09,0.024,70,0.04,0,150,0.04,0,85,0.03,2

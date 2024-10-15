@@ -7,13 +7,9 @@ using System.Collections.ObjectModel;
 public class CharacterStatusData
 {
 	/// <summary>
-	/// 유닛 고유 인덱스
+	/// 캐릭터 고유 인덱스
 	/// </summary>
 	public int Index;
-	/// <summary>
-	/// 유닛 이름
-	/// </summary>
-	public string Name;
 	/// <summary>
 	/// 직업 타입 (탱커, 딜러, 서포터)
 	/// </summary>
@@ -87,10 +83,9 @@ public class CharacterStatusData
 	/// </summary>
 	public float CRIT_DMG;
 
-	public CharacterStatusData(int index, string name, ReGenesis.Enums.Character.JobType jobtype, ReGenesis.Enums.Character.FormationType formationtype, ReGenesis.Enums.Character.AttackType attacktype, float hp, float hp_level, float hp_grade, float atk, float atk_level, float atk_grade, float def, float def_level, float def_grade, float mag, float mag_level, float mag_grade, float spd, float crit, float crit_dmg)
+	public CharacterStatusData(int index, ReGenesis.Enums.Character.JobType jobtype, ReGenesis.Enums.Character.FormationType formationtype, ReGenesis.Enums.Character.AttackType attacktype, float hp, float hp_level, float hp_grade, float atk, float atk_level, float atk_grade, float def, float def_level, float def_grade, float mag, float mag_level, float mag_grade, float spd, float crit, float crit_dmg)
 	{
 		Index = index;
-		Name = name;
 		JobType = jobtype;
 		FormationType = formationtype;
 		AttackType = attacktype;
@@ -135,27 +130,26 @@ public class CharacterStatusTable : ITable
 			if (row != null)
 			{
 				int index = row.GetValue<int>(0);
-				string name = row.GetValue<string>(1);
-				ReGenesis.Enums.Character.JobType jobtype = row.GetValue<ReGenesis.Enums.Character.JobType>(2);
-				ReGenesis.Enums.Character.FormationType formationtype = row.GetValue<ReGenesis.Enums.Character.FormationType>(3);
-				ReGenesis.Enums.Character.AttackType attacktype = row.GetValue<ReGenesis.Enums.Character.AttackType>(4);
-				float hp = row.GetValue<float>(5);
-				float hp_level = row.GetValue<float>(6);
-				float hp_grade = row.GetValue<float>(7);
-				float atk = row.GetValue<float>(8);
-				float atk_level = row.GetValue<float>(9);
-				float atk_grade = row.GetValue<float>(10);
-				float def = row.GetValue<float>(11);
-				float def_level = row.GetValue<float>(12);
-				float def_grade = row.GetValue<float>(13);
-				float mag = row.GetValue<float>(14);
-				float mag_level = row.GetValue<float>(15);
-				float mag_grade = row.GetValue<float>(16);
-				float spd = row.GetValue<float>(17);
-				float crit = row.GetValue<float>(18);
-				float crit_dmg = row.GetValue<float>(19);
+				ReGenesis.Enums.Character.JobType jobtype = row.GetValue<ReGenesis.Enums.Character.JobType>(1);
+				ReGenesis.Enums.Character.FormationType formationtype = row.GetValue<ReGenesis.Enums.Character.FormationType>(2);
+				ReGenesis.Enums.Character.AttackType attacktype = row.GetValue<ReGenesis.Enums.Character.AttackType>(3);
+				float hp = row.GetValue<float>(4);
+				float hp_level = row.GetValue<float>(5);
+				float hp_grade = row.GetValue<float>(6);
+				float atk = row.GetValue<float>(7);
+				float atk_level = row.GetValue<float>(8);
+				float atk_grade = row.GetValue<float>(9);
+				float def = row.GetValue<float>(10);
+				float def_level = row.GetValue<float>(11);
+				float def_grade = row.GetValue<float>(12);
+				float mag = row.GetValue<float>(13);
+				float mag_level = row.GetValue<float>(14);
+				float mag_grade = row.GetValue<float>(15);
+				float spd = row.GetValue<float>(16);
+				float crit = row.GetValue<float>(17);
+				float crit_dmg = row.GetValue<float>(18);
 
-				CharacterStatusData data = new CharacterStatusData(index, name, jobtype, formationtype, attacktype, hp, hp_level, hp_grade, atk, atk_level, atk_grade, def, def_level, def_grade, mag, mag_level, mag_grade, spd, crit, crit_dmg);
+				CharacterStatusData data = new CharacterStatusData(index, jobtype, formationtype, attacktype, hp, hp_level, hp_grade, atk, atk_level, atk_grade, def, def_level, def_grade, mag, mag_level, mag_grade, spd, crit, crit_dmg);
 				_table.Add(data);
 			}
 		}

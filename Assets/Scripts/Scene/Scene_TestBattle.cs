@@ -1,17 +1,21 @@
-using UnityEngine;
-
 public class Scene_TestBattle : SceneBase
 {
     public override void Initialize()
     {
         base.Initialize();
 
-        GameObject obj = new GameObject("TestScript");
-        obj.AddComponent<TestScript>();
+        SoundManager.Instance.PlayBGM(11);
+
+        TestFunction();
     }
 
     public override void Release()
     {
         base.Release();
+    }
+
+    private void TestFunction()
+    {
+
     }
 }

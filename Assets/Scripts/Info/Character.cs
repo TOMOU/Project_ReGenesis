@@ -9,7 +9,6 @@ namespace ReGenesis.Info
         public int level;
 
         public int index;
-        public string name;
         public JobType jobType;
         public FormationType formationType;
         public AttackType attackType;
@@ -32,7 +31,6 @@ namespace ReGenesis.Info
 
             // 기본 정보
             this.index = data.Index;
-            this.name = data.Name;
             this.jobType = data.JobType;
             this.formationType = data.FormationType;
             this.attackType = data.AttackType;
