@@ -1,55 +1,47 @@
 using ReGenesis.Enums.Character;
-using System.Collections;
-using UnityEngine;
+using Spine.Unity;
 
 namespace FSM
 {
     public class CharacterBattleFSM : BaseFSM
     {
-        private void Awake()
+        private SkeletonAnimation _skeleton;
+
+        private void Initialize()
         {
+            if (_skeleton == null)
+            {
+                _skeleton = GetComponent<SkeletonAnimation>();
+            }
+
             Initialize<StateFSM>(this);
             ChangeState(StateFSM.Idle);
         }
 
-        private void Update()
+        public void Idle_Enter()
         {
-            if (Input.GetKeyDown(KeyCode.Keypad0))
+            PlayAnimation("idle", true);
+        }
+
+        public void Idle_Exit()
+        {
+        }
+
+        public void Run_Enter()
+        {
+            PlayAnimation("run", true);
+        }
+
+        public void Run_Exit()
+        {
+        }
+
+        private void PlayAnimation(string name, bool isLoop = false)
+        {
+            if (_skeleton != null)
             {
-                ChangeState(StateFSM.Idle);
+                _skeleton.AnimationState.SetAnimation(0, name, isLoop);
             }
-            else if (Input.GetKeyDown(KeyCode.Keypad1))
-            {
-                ChangeState(StateFSM.Run);
-            }
-        }
-
-        public IEnumerator Idle_Enter()
-        {
-            Logger.Log("Idle_Enter");
-            yield return new WaitForSeconds(10f);
-            Logger.Log("Idle_Enter_Fin");
-        }
-
-        public IEnumerator Idle_Exit()
-        {
-            Logger.Log("Idle_Exit");
-            yield return new WaitForSeconds(2f);
-            Logger.Log("Idle_Exit_Fin");
-        }
-
-        public IEnumerator Run_Enter()
-        {
-            Logger.Log("Run_Enter");
-            yield return new WaitForSeconds(10f);
-            Logger.Log("Run_Enter_Fin");
-        }
-
-        public IEnumerator Run_Exit()
-        {
-            Logger.Log("Run_Exit");
-            yield return new WaitForSeconds(2f);
-            Logger.Log("Run_Exit_Fin");
         }
     }
 }
