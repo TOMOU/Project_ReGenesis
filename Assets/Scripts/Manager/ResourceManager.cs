@@ -58,7 +58,7 @@ public class ResourceManager : MonoSingleton<ResourceManager>
     public GameObject LoadCharacterSpineModel(string path)
     {
 #if UNITY_EDITOR
-        GameObject obj = AssetDatabase.LoadAssetAtPath<GameObject>($"Assets/AssetBundles/Character/{path}/SpineModel.prefab");
+        GameObject obj = AssetDatabase.LoadAssetAtPath<GameObject>($"Assets/AssetBundles/Character/{path}");
 #endif
 
         return obj;

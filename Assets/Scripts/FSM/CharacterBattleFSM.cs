@@ -7,7 +7,10 @@ namespace FSM
     {
         private SkeletonAnimation _skeleton;
 
-        private void Initialize()
+        /// <summary>
+        /// Skeleton 파싱 후 초기화.
+        /// </summary>
+        public void Initialize()
         {
             if (_skeleton == null)
             {

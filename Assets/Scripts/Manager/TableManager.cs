@@ -26,6 +26,7 @@ public class TableManager : MonoSingleton<TableManager>
         AddTableDic<SoundTable>();
         AddTableDic<LocalizationTable>();
         AddTableDic<CharacterStatusTable>();
+        AddTableDic<CharacterTable>();
     }
 
     /// <summary>
