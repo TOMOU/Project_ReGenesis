@@ -23,6 +23,14 @@ public class CharacterStatusData
 	/// </summary>
 	public ReGenesis.Enums.Character.AttackType AttackType;
 	/// <summary>
+	/// 유닛의 공격 사거리
+	/// </summary>
+	public float AttackRange;
+	/// <summary>
+	/// 유닛의 공격 쿨타임
+	/// </summary>
+	public float AttackRate;
+	/// <summary>
 	/// 기본 체력
 	/// </summary>
 	public float HP;
@@ -82,13 +90,19 @@ public class CharacterStatusData
 	/// 치명타 데미지 배율
 	/// </summary>
 	public float CRIT_DMG;
+	/// <summary>
+	/// 회피율
+	/// </summary>
+	public float DODGE;
 
-	public CharacterStatusData(int index, ReGenesis.Enums.Character.JobType jobtype, ReGenesis.Enums.Character.FormationType formationtype, ReGenesis.Enums.Character.AttackType attacktype, float hp, float hp_level, float hp_grade, float atk, float atk_level, float atk_grade, float def, float def_level, float def_grade, float mag, float mag_level, float mag_grade, float spd, float crit, float crit_dmg)
+	public CharacterStatusData(int index, ReGenesis.Enums.Character.JobType jobtype, ReGenesis.Enums.Character.FormationType formationtype, ReGenesis.Enums.Character.AttackType attacktype, float attackrange, float attackrate, float hp, float hp_level, float hp_grade, float atk, float atk_level, float atk_grade, float def, float def_level, float def_grade, float mag, float mag_level, float mag_grade, float spd, float crit, float crit_dmg, float dodge)
 	{
 		Index = index;
 		JobType = jobtype;
 		FormationType = formationtype;
 		AttackType = attacktype;
+		AttackRange = attackrange;
+		AttackRate = attackrate;
 		HP = hp;
 		HP_Level = hp_level;
 		HP_Grade = hp_grade;
@@ -104,6 +118,7 @@ public class CharacterStatusData
 		SPD = spd;
 		CRIT = crit;
 		CRIT_DMG = crit_dmg;
+		DODGE = dodge;
 	}
 }
 
@@ -133,23 +148,26 @@ public class CharacterStatusTable : ITable
 				ReGenesis.Enums.Character.JobType jobtype = row.GetValue<ReGenesis.Enums.Character.JobType>(1);
 				ReGenesis.Enums.Character.FormationType formationtype = row.GetValue<ReGenesis.Enums.Character.FormationType>(2);
 				ReGenesis.Enums.Character.AttackType attacktype = row.GetValue<ReGenesis.Enums.Character.AttackType>(3);
-				float hp = row.GetValue<float>(4);
-				float hp_level = row.GetValue<float>(5);
-				float hp_grade = row.GetValue<float>(6);
-				float atk = row.GetValue<float>(7);
-				float atk_level = row.GetValue<float>(8);
-				float atk_grade = row.GetValue<float>(9);
-				float def = row.GetValue<float>(10);
-				float def_level = row.GetValue<float>(11);
-				float def_grade = row.GetValue<float>(12);
-				float mag = row.GetValue<float>(13);
-				float mag_level = row.GetValue<float>(14);
-				float mag_grade = row.GetValue<float>(15);
-				float spd = row.GetValue<float>(16);
-				float crit = row.GetValue<float>(17);
-				float crit_dmg = row.GetValue<float>(18);
+				float attackrange = row.GetValue<float>(4);
+				float attackrate = row.GetValue<float>(5);
+				float hp = row.GetValue<float>(6);
+				float hp_level = row.GetValue<float>(7);
+				float hp_grade = row.GetValue<float>(8);
+				float atk = row.GetValue<float>(9);
+				float atk_level = row.GetValue<float>(10);
+				float atk_grade = row.GetValue<float>(11);
+				float def = row.GetValue<float>(12);
+				float def_level = row.GetValue<float>(13);
+				float def_grade = row.GetValue<float>(14);
+				float mag = row.GetValue<float>(15);
+				float mag_level = row.GetValue<float>(16);
+				float mag_grade = row.GetValue<float>(17);
+				float spd = row.GetValue<float>(18);
+				float crit = row.GetValue<float>(19);
+				float crit_dmg = row.GetValue<float>(20);
+				float dodge = row.GetValue<float>(21);
 
-				CharacterStatusData data = new CharacterStatusData(index, jobtype, formationtype, attacktype, hp, hp_level, hp_grade, atk, atk_level, atk_grade, def, def_level, def_grade, mag, mag_level, mag_grade, spd, crit, crit_dmg);
+				CharacterStatusData data = new CharacterStatusData(index, jobtype, formationtype, attacktype, attackrange, attackrate, hp, hp_level, hp_grade, atk, atk_level, atk_grade, def, def_level, def_grade, mag, mag_level, mag_grade, spd, crit, crit_dmg, dodge);
 				_table.Add(data);
 			}
 		}

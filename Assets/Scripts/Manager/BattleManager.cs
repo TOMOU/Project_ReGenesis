@@ -39,7 +39,7 @@ public class BattleManager : MonoSingleton<BattleManager>
                 continue;
             }
 
-            float distance = BattleCalc.GetDistance(my.transform, c.transform);
+            float distance = my.transform.GetDistance(c.transform);
             if (distance < minDistance)
             {
                 minDistance = distance;

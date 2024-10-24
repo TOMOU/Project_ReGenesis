@@ -20,10 +20,10 @@ public class Scene_TestBattle : SceneBase
     private void TestFunction()
     {
         // 아군
-        CreateCharacterEntity(100000, new Vector3(-12, -3));
+        CreateCharacterEntity(100001, new Vector3(-12, -3));
 
         // 적군
-        CreateCharacterEntity(100003, new Vector3(12, -3));
+        CreateCharacterEntity(100002, new Vector3(12, -3));
     }
 
     private void CreateCharacterEntity(int index, Vector3 vec)

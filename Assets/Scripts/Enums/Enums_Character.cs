@@ -30,9 +30,9 @@ namespace ReGenesis.Enums.Character
         Idle,           // 대기
         Run,            // 이동
         Attack,         // 일반공격
-        Skill_0,        // 궁극기 스킬
-        Skill_1,        // 일반스킬 1
-        Skill_2,        // 일반스킬 2
+        Skill0,         // 궁극기 스킬
+        Skill1,         // 일반스킬 1
+        Skill2,         // 일반스킬 2
         Stun,           // 기절
         Victory,        // 승리모션
         Die,            // 죽음

@@ -13,6 +13,10 @@ namespace Info
         public float CRIT;
         public float CRIT_DMG;
 
+        public float AttackRange;
+        public float AttackRate;
+        public float Dodge;
+
         public Status(int index, int grade, int level, CharacterStatusData data)
         {
             // 등급&레벨 스케일 적용 스테이터스
@@ -24,6 +28,9 @@ namespace Info
             this.SPD = data.SPD;
             this.CRIT = data.CRIT;
             this.CRIT_DMG = data.CRIT_DMG;
+            this.AttackRange = data.AttackRange;
+            this.AttackRate = data.AttackRate;
+            this.Dodge = data.DODGE;
         }
     }
 }

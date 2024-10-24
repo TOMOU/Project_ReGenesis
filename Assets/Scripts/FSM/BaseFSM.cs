@@ -236,6 +236,8 @@ namespace FSM
                 {
                     yield return StartCoroutine(_exitRoutine);
                 }
+
+                _exitRoutine = null;
             }
 
             _currentState = _nextState;
@@ -244,6 +246,7 @@ namespace FSM
             {
                 yield return StartCoroutine(_enterRoutine);
             }
+            _enterRoutine = null;
 
             _isInTransition = false;
         }
