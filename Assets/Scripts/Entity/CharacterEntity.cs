@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CharacterEntity : MonoBehaviour
 {
+    public TeamType teamType;
     /// <summary>
     /// 캐릭터의 정보
     /// </summary>
@@ -37,8 +38,10 @@ public class CharacterEntity : MonoBehaviour
     /// <param name="index">캐릭터의 인덱스</param>
     /// <param name="grade">캐릭터의 등급</param>
     /// <param name="level">캐릭터의 레벨</param>
-    public void Initialize(int index, int grade, int level)
+    public void Initialize(TeamType teamType, int index, int grade, int level)
     {
+        this.teamType = teamType;
+
         Init_Status(index, grade, level);
         Init_FSM();
     }
@@ -97,7 +100,8 @@ public class CharacterEntity : MonoBehaviour
             _target = BattleManager.Instance.FindCharacter(this);
             if (_target == null)
             {
-                // 모든 적이 죽었다. Victory 상태로는 OnIdle에서 동작시킨다.
+                // 모든 적이 죽었다
+                _fsm.ChangeState(StateFSM.Victory);
                 return false;
             }
         }
@@ -163,11 +167,8 @@ public class CharacterEntity : MonoBehaviour
         // 데미지의 최종 확정 (float값의 소숫점을 올림)
         int finalDamage = Mathf.CeilToInt(dmg);
 
-        int prevHP = _my.status.HP;
-
         // 데미지를 적용
         _my.status.HP -= finalDamage;
-        Logger.LogFormat("[{0}] {1} → {2}", gameObject.name, prevHP, _my.status.HP);
         if (_my.status.HP <= 0)
         {
             _fsm.ChangeState(StateFSM.Die);
@@ -194,7 +195,6 @@ public class CharacterEntity : MonoBehaviour
         // 타겟이 살아있는지 체크
         if (CheckTarget() == false)
         {
-            _fsm.ChangeState(StateFSM.Victory);
             return;
         }
 
@@ -289,4 +289,13 @@ public class CharacterEntity : MonoBehaviour
 
     }
     #endregion
+
+    private void OnDrawGizmos()
+    {
+        if (_target == null)
+            return;
+
+        Gizmos.color = teamType == TeamType.Blue ? Color.blue : Color.red;
+        Gizmos.DrawLine(transform.position, _target.transform.position);
+    }
 }

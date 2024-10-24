@@ -20,13 +20,21 @@ public class Scene_TestBattle : SceneBase
     private void TestFunction()
     {
         // 아군
-        CreateCharacterEntity(100001, new Vector3(-12, -3));
+        CreateCharacterEntity(ReGenesis.Enums.Character.TeamType.Blue, 100002, new Vector3(-5, -3));
+        CreateCharacterEntity(ReGenesis.Enums.Character.TeamType.Blue, 100001, new Vector3(-5, -1));
+        CreateCharacterEntity(ReGenesis.Enums.Character.TeamType.Blue, 100003, new Vector3(-9, -3));
+        CreateCharacterEntity(ReGenesis.Enums.Character.TeamType.Blue, 100000, new Vector3(-13, -1));
+        CreateCharacterEntity(ReGenesis.Enums.Character.TeamType.Blue, 100004, new Vector3(-13, -5));
 
         // 적군
-        CreateCharacterEntity(100002, new Vector3(12, -3));
+        CreateCharacterEntity(ReGenesis.Enums.Character.TeamType.Red, 100002, new Vector3(5, -1));
+        CreateCharacterEntity(ReGenesis.Enums.Character.TeamType.Red, 100001, new Vector3(5, -5));
+        CreateCharacterEntity(ReGenesis.Enums.Character.TeamType.Red, 100003, new Vector3(9, -5));
+        CreateCharacterEntity(ReGenesis.Enums.Character.TeamType.Red, 100000, new Vector3(13, -3));
+        CreateCharacterEntity(ReGenesis.Enums.Character.TeamType.Red, 100004, new Vector3(13, -1));
     }
 
-    private void CreateCharacterEntity(int index, Vector3 vec)
+    private void CreateCharacterEntity(ReGenesis.Enums.Character.TeamType teamType, int index, Vector3 vec)
     {
         var table = TableManager.Instance.GetTable<CharacterTable>();
         if (table != null)
@@ -44,7 +52,7 @@ public class Scene_TestBattle : SceneBase
 
                     // Entity 추가
                     CharacterEntity entity = obj.AddComponent<CharacterEntity>();
-                    entity.Initialize(index, 1, 1);
+                    entity.Initialize(teamType, index, 1, Random.Range(1, 5));
 
                     BattleManager.Instance.AddCharacter(entity);
                 }

@@ -38,4 +38,11 @@ namespace ReGenesis.Enums.Character
         Die,            // 죽음
         Max
     }
+
+    public enum TeamType
+    {
+        None,
+        Blue,
+        Red,
+    }
 }

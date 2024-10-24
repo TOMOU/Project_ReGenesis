@@ -38,6 +38,14 @@ public class BattleManager : MonoSingleton<BattleManager>
             {
                 continue;
             }
+            else if (c.teamType == my.teamType)
+            {
+                continue;
+            }
+            else if (c.IsAlive() == false)
+            {
+                continue;
+            }
 
             float distance = my.transform.GetDistance(c.transform);
             if (distance < minDistance)
