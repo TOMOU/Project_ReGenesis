@@ -19,14 +19,14 @@ public class Scene_TestBattle : SceneBase
 
     private void TestFunction()
     {
-        // 캐릭터 5마리 배치
-        for (int i = 100000; i < 100005; i++)
-        {
-            CreateCharacterEntity(i);
-        }
+        // 아군
+        CreateCharacterEntity(100000, new Vector3(-12, -3));
+
+        // 적군
+        CreateCharacterEntity(100003, new Vector3(12, -3));
     }
 
-    private void CreateCharacterEntity(int index)
+    private void CreateCharacterEntity(int index, Vector3 vec)
     {
         var table = TableManager.Instance.GetTable<CharacterTable>();
         if (table != null)
@@ -39,7 +39,7 @@ public class Scene_TestBattle : SceneBase
                 {
                     GameObject obj = GameObject.Instantiate(prefab);
                     obj.name = LocalizationManager.Instance.GetString(data.Name);
-                    obj.transform.localPosition = Vector3.zero;
+                    obj.transform.localPosition = vec;
                     obj.transform.localScale = Vector3.one * 0.3f;
 
                     // Entity 추가

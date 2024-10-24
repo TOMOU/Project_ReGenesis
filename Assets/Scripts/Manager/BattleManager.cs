@@ -26,4 +26,27 @@ public class BattleManager : MonoSingleton<BattleManager>
             _characterList.Add(character);
         }
     }
+
+    public CharacterEntity FindCharacter(CharacterEntity my)
+    {
+        CharacterEntity target = null;
+        float minDistance = float.MaxValue;
+
+        foreach (CharacterEntity c in _characterList)
+        {
+            if (c == my)
+            {
+                continue;
+            }
+
+            float distance = BattleCalc.GetDistance(my.transform, c.transform);
+            if (distance < minDistance)
+            {
+                minDistance = distance;
+                target = c;
+            }
+        }
+
+        return target;
+    }
 }

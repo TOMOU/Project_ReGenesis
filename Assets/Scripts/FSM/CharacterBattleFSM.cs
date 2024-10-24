@@ -1,20 +1,25 @@
 using ReGenesis.Enums.Character;
 using Spine.Unity;
+using System;
 
 namespace FSM
 {
     public class CharacterBattleFSM : BaseFSM
     {
-        private SkeletonAnimation _skeleton;
+        public SkeletonAnimation skeleton;
+
+        // callback list
+        public Action cbIdle;
+        public Action cbRun;
 
         /// <summary>
         /// Skeleton 파싱 후 초기화.
         /// </summary>
         public void Initialize()
         {
-            if (_skeleton == null)
+            if (skeleton == null)
             {
-                _skeleton = GetComponent<SkeletonAnimation>();
+                skeleton = GetComponent<SkeletonAnimation>();
             }
 
             Initialize<StateFSM>(this);
@@ -26,6 +31,14 @@ namespace FSM
             PlayAnimation("idle", true);
         }
 
+        public void Idle_Update()
+        {
+            if (cbIdle != null)
+            {
+                cbIdle.Invoke();
+            }
+        }
+
         public void Idle_Exit()
         {
         }
@@ -35,15 +48,23 @@ namespace FSM
             PlayAnimation("run", true);
         }
 
+        public void Run_Update()
+        {
+            if (cbRun != null)
+            {
+                cbRun.Invoke();
+            }
+        }
+
         public void Run_Exit()
         {
         }
 
         private void PlayAnimation(string name, bool isLoop = false)
         {
-            if (_skeleton != null)
+            if (skeleton != null)
             {
-                _skeleton.AnimationState.SetAnimation(0, name, isLoop);
+                skeleton.AnimationState.SetAnimation(0, name, isLoop);
             }
         }
     }
