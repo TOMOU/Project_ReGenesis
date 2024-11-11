@@ -18,6 +18,10 @@ public class CharacterEntity : MonoBehaviour
     /// </summary>
     private CharacterEntity _target;
     /// <summary>
+    /// 캐릭터의 sorting layer를 컨트롤하기 위해 meshrenderer를 가져온다.
+    /// </summary>
+    public MeshRenderer skeletonMesh;
+    /// <summary>
     /// 공격 사거리 (status 테이블의 AttackRange의 제곱값).
     /// <br>이 사거리 이내면 공격루틴으로 들어간다.</br>
     /// </summary>

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine;
 
 public class BattleManager : MonoSingleton<BattleManager>
 {
@@ -56,5 +57,35 @@ public class BattleManager : MonoSingleton<BattleManager>
         }
 
         return target;
+    }
+
+    private void SortCharacter()
+    {
+        // 캐릭터의 y위치를 기반으로 내림차순 정렬
+        _characterList.Sort((CharacterEntity a, CharacterEntity b) =>
+        {
+            return b.transform.localPosition.y.CompareTo(a.transform.localPosition.y);
+        });
+
+        // 순서대로 orderLayer를 변경
+        for (int i = 0; i < _characterList.Count; i++)
+        {
+            if (_characterList[i].skeletonMesh == null)
+            {
+                _characterList[i].skeletonMesh = _characterList[i].GetComponent<MeshRenderer>();
+            }
+
+            _characterList[i].skeletonMesh.sortingOrder = 10 + i * 10;
+        }
+    }
+
+    private void LateUpdate()
+    {
+        if (_characterList == null)
+        {
+            return;
+        }
+
+        SortCharacter();
     }
 }
